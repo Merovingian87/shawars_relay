@@ -7,8 +7,13 @@ const app = express();
 app.use(express.json());
 app.options('*', cors());
 
+let corsOptions = {
+  origin: 'https://shawars.com',
+  optionsSuccessStatus: 200.
+}
 
-app.get('/', (req, res) => {
+
+app.get('/', cors(corsOptions), (req, res) => {
   console.log('responding to request...')
   axios.get('https://pow.market/api')
     .then((data) => {
